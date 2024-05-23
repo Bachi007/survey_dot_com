@@ -14,6 +14,49 @@ export class LoginComponent {
   loginuserpassword: any;
   user: any;
   msg:any;
+  userId:any;
+  userName:any;
+  userEmail:any;
+  userPassword:any;
+  userMobile:any;
+  mail="techteam@survey.com"
+  register(){
+    this.user={
+      //userId:this.userId,
+      userName:this.userName,
+      userEmail:this.userEmail,
+      userPassword:this.userPassword,
+      userMobile:this.userMobile,
+      userRole:'user'
+    }
+    this.service.reg(this.user).subscribe((res:any)=>{
+      this.msg=res;
+      // alert(this.msg)
+      // this.router.navigateByUrl('/login')
+        if(this.msg=="user registered"){
+          Swal.fire({
+            title: 'Registration Successful!',
+            text: this.msg,
+            icon: 'success',
+            confirmButtonText: 'OK'
+          })
+          this.userName="";
+          this.userEmail="";
+          this.userPassword="";
+          this.userMobile="";
+          
+        }
+        else{
+          Swal.fire({
+            title: 'Registration not Successful!',
+            text: this.msg,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          })
+        }
+        this.router.navigateByUrl('/login');
+      });
+    }
   login() {
    
     this.user = {
