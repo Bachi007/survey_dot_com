@@ -1,0 +1,59 @@
+<div class="row d-flex justify-content-center mt-5">
+    <div class="col-md-4">
+        <label for="" class="form-label">Select Form</label>
+        <select name="" id="" [(ngModel)]="getformid" class="form-select">
+            <option value="">Select Form</option>
+            <option *ngFor="let d of forms" [value]="d.formId">{{d.formTitle}}</option>
+        </select>
+        <br>
+        <button (click)="getAllSubmissions()" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th *ngFor="let field of fields">
+                        {{ field.label }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let response of responses">
+                    <td *ngFor="let field of fields">
+                        {{ response[field.label] }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center mt-5" *ngIf="fields">
+    <div class="col-md-4">
+        <label for="" class="form-label">Select Field to visualize</label>
+        <select name="" id="" [(ngModel)]="getformlabel" class="form-select">
+            <option value="">Select Form</option>
+            <option *ngFor="let field of fields" [value]="field.label">{{field.label}}</option>
+        </select>
+        <br>
+        <button (click)="visualize()" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+
+<div style="display: flex;" *ngIf="fields">
+    <ngx-charts-bar-vertical
+      [view]="[700, 400]"
+      [scheme]="colorScheme"
+      [results]="chartData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      xAxisLabel="Name"
+      yAxisLabel="Value">
+    </ngx-charts-bar-vertical>
+</div>

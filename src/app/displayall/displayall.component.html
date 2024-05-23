@@ -1,0 +1,36 @@
+
+<div class="row">
+    <div *ngFor="let form of allforms" class="col-md-4">
+        <div   class="card">
+        <div class="card-title">
+            <h5>{{form.formTitle}}</h5>
+            <input type="text" [value]="form.formLink" readonly class="form-control">
+            <br>
+            <button (click)="copyToClipboard(form.formLink)" class="btn btn-warning">Copy Link</button>
+        </div>    
+            <div class="card-body" *ngFor="let field of form.formFields">
+            <div *ngIf="field.type == 'text'">
+                <label for="">{{field.label}}</label>
+                <input type="text" class="form-control" >
+            </div>
+            <div *ngIf="field.type == 'radio'">
+                <label for="">{{field.label}}</label>
+                <div *ngFor="let option of field.options">
+                    <input type="radio" name="{{field.label}}" id="{{option}}" value="{{option}}">
+                    <label for="{{option}}">{{option}}</label>
+                </div>
+            </div>
+
+        </div>
+        <button class="btn btn-primary">
+            <mat-icon> edit</mat-icon>
+        </button>
+        <button class="btn btn-danger" (click)="deleteForm(form.formId)">
+            <mat-icon>delete</mat-icon>
+        </button>
+       
+    </div>
+        </div>
+        
+    
+    </div>
