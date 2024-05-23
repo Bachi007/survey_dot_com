@@ -40,7 +40,7 @@ export class LoginComponent {
           confirmButtonText: 'OK'
         })
         localStorage.setItem('user',JSON.stringify(this.user));
-        this.router.navigateByUrl('/user')
+        this.router.navigateByUrl('/user/all')
       }
       else{
         alert(this.msg)

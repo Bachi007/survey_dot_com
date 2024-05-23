@@ -20,7 +20,9 @@ import { ResponsesComponent } from './responses/responses.component';
 import { HomeComponent } from './home/home.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DisplayallComponent } from './displayall/displayall.component';
-
+import { ViewresponseComponent } from './viewresponse/viewresponse.component';
+import { AllformsComponent } from './allforms/allforms.component';
+import { MatTable, MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { DisplayallComponent } from './displayall/displayall.component';
     ViewformComponent,
     ResponsesComponent,
     HomeComponent,
-    DisplayallComponent
+    DisplayallComponent,
+    ViewresponseComponent,
+    AllformsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ import { DisplayallComponent } from './displayall/displayall.component';
     ReactiveFormsModule, MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    MatToolbarModule,
+    MatToolbarModule,MatTableModule,
     MatListModule,NgxChartsModule
   ],
   providers: [

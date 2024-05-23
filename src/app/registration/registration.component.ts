@@ -31,13 +31,18 @@ export class RegistrationComponent {
       this.msg=res;
       // alert(this.msg)
       // this.router.navigateByUrl('/login')
-        if(this.msg=="User registered successfully"){
+        if(this.msg=="user registered"){
           Swal.fire({
             title: 'Registration Successful!',
             text: this.msg,
             icon: 'success',
             confirmButtonText: 'OK'
           })
+          this.userName="";
+          this.userEmail="";
+          this.userPassword="";
+          this.userMobile="";
+          
         }
         else{
           Swal.fire({

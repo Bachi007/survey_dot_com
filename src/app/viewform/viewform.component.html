@@ -3,11 +3,11 @@
         <div *ngFor="let row of formFields; index as i">
             
             <div *ngIf="row.type === 'text'" class="form-group">
-                <label class="form-label">{{i}}.{{ row.label }}</label>
+                <label class="form-label">{{i+1}}.{{ row.label }}</label>
                 <input type="text" [formControlName]="row.label" class="form-control" />
             </div>
             <div *ngIf="row.type === 'radio'" class="form-group">
-                <label class="form-label">{{i}}.{{ row.label }}</label>
+                <label class="form-label">{{i+1}}.{{ row.label }}</label>
                 <div *ngFor="let option of row.options">
                     <input type="radio" [value]="option" [formControlName]="row.label" class="form-check-input"> {{ option }}
                 </div>

@@ -1,1 +1,40 @@
-<p>userdashboard works!</p>
+<mat-toolbar color="primary">
+    <button mat-icon-button aria-label="Menu icon"  mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Survey Monkeys</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container autosize>
+    <mat-sidenav [opened]="true" mode="side">
+      <mat-nav-list>
+        <div class="user-info">
+            <img *ngIf="!isCollapsed" src="assets/avatar.webp" height="150" width="150" style="margin-left:30px;" alt="User Avatar">
+            <br><br>
+            <h6 *ngIf="!isCollapsed" style="margin-left:60px;">{{ username  | uppercase}}</h6>
+          </div>
+        <a mat-list-item [routerLink]="'/user/all'">
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span  *ngIf="!isCollapsed">Dashboard</span>
+          </span>
+        </a>
+        <a mat-list-item [routerLink]="'/user/view'">
+            <span class="entry">
+                <mat-icon>description</mat-icon>
+                <span  *ngIf="!isCollapsed">View Response</span>
+              </span>
+          </a>
+          <a mat-list-item (click)="logoutme()">
+            <span class="entry">
+              <mat-icon>logout</mat-icon>
+              <span  *ngIf="!isCollapsed">Logout</span>
+            </span>
+          </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

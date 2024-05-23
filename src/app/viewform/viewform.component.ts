@@ -14,8 +14,12 @@ export class ViewformComponent {
   jsonData: any;form: FormGroup = this.fb.group({});
   constructor(private route: ActivatedRoute,private fb: FormBuilder,private router:Router, private service: FormService) {}
 
+  user:any;username:any;
+
   ngOnInit(): void {
     
+   this.user= JSON.parse(localStorage.getItem('user') || '{}');
+    this.username=this.user.userName;
     
     const formId = this.route.snapshot.paramMap.get('formId');
     console.log('Retrieved Form ID:', formId);  // Debug log
@@ -50,13 +54,15 @@ export class ViewformComponent {
   }
   submitForm() {
     const formId = this.route.snapshot.paramMap.get('formId');
-      const newformdata=this.form.value
+      let newformdata=this.form.value
+      newformdata.username=this.username;
       console.log('Form Data to be submitted:', newformdata); 
       if (formId) {
       this.service.submitFormData(formId, newformdata).subscribe(
         (response:any) => {
           alert(response);
           this.form.reset();
+          this.router.navigateByUrl('/user/view')
         },
         (error:any) => {
           console.error('Error submitting form data', error);

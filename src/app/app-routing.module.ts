@@ -9,6 +9,8 @@ import { ViewformComponent } from './viewform/viewform.component';
 import { ResponsesComponent } from './responses/responses.component';
 import { HomeComponent } from './home/home.component';
 import { DisplayallComponent } from './displayall/displayall.component';
+import { AllformsComponent } from './allforms/allforms.component';
+import { ViewresponseComponent } from './viewresponse/viewresponse.component';
 
 
 const routes: Routes = [
@@ -25,7 +27,13 @@ const routes: Routes = [
   {path:'form/:formId',component:ViewformComponent},
   {path:'admin',component:AdmindashboardComponent},
   {path:'forms',component:FormsComponent},
-  {path:'user',component:UserdashboardComponent}
+  {path:'user',component:UserdashboardComponent,
+  children:[
+    {path:'all',component:AllformsComponent},
+    {path:'view',component:ViewresponseComponent}
+  ]
+  },
+  
 ];
 
 @NgModule({
