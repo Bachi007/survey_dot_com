@@ -14,7 +14,8 @@ export class ResponsesComponent {
   forms: any;
   getformid: any;
   responses: any;
-  fields: any;getformlabel:any;
+  fields: any;
+  getformlabel: any;
   colorScheme: any = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
@@ -50,5 +51,9 @@ export class ResponsesComponent {
     this.service.getAllForms().subscribe((res: any) => {
       this.forms = res;
     });
+  }
+
+  yAxisTickFormat(value: number): string {
+    return Math.floor(value).toString();
   }
 }

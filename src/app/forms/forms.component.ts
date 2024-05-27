@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { FormService } from '../services/forms.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface Question {
   questionNumber: number;
@@ -18,7 +19,7 @@ export class FormsComponent {
   form: FormGroup = this.fb.group({});
   jsonData: any;
 
-  constructor(private fb: FormBuilder, private service:FormService) {}
+  constructor(private fb: FormBuilder, private service:FormService,private router:Router) {}
   flag=false;
   onFileChange(event: any) {
     this.flag=true;
@@ -61,11 +62,14 @@ export class FormsComponent {
       this.shareLink = res.shareableLink;
       console.log('Shareable link:', this.shareLink);
     });
+    alert("form created")
+    this.router.navigateByUrl("/admin/display")
   }
 
   generateShareLink() {
     if (this.jsonData.length > 0) {
       this.saveFormStructure();
+
     } else {
       console.error('No form structure to share');
     }

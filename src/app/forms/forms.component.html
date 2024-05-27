@@ -26,14 +26,14 @@
       <div *ngIf="flag">
         <button type="submit" class="btn btn-success" disabled>Submit</button>
           &nbsp;&nbsp;
-          <button (click)="generateShareLink()" class="btn btn-primary">Generate Share Link</button>
+          <button (click)="generateShareLink()" class="btn btn-primary">Generate Form</button>
         
         
-        <div *ngIf="shareLink" class="share-link-container">
+        <!-- <div *ngIf="shareLink" class="share-link-container">
           <label>Shareable Link:</label>
           <input type="text" [value]="shareLink" readonly class="form-control">
           <button (click)="copyToClipboard(shareLink)" class="btn btn-warning">Copy Link</button>
-        </div>
+        </div> -->
       </div>
     </form>
     

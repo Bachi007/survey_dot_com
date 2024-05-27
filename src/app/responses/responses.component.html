@@ -36,7 +36,9 @@
         <label for="" class="form-label">Select Field to visualize</label>
         <select name="" id="" [(ngModel)]="getformlabel" class="form-select">
             <option value="">Select Form</option>
-            <option *ngFor="let field of fields" [value]="field.label">{{field.label}}</option>
+            <ng-container *ngFor="let field of fields">
+                <option *ngIf="field.type === 'radio'" [ngValue]="field.label">{{field.label}}</option>
+            </ng-container>
         </select>
         <br>
         <button (click)="visualize()" class="btn btn-primary">Submit</button>
@@ -53,7 +55,9 @@
       [legend]="true"
       [showXAxisLabel]="true"
       [showYAxisLabel]="true"
+      [yAxisTickFormatting]="yAxisTickFormat"
       xAxisLabel="Name"
       yAxisLabel="Value">
     </ngx-charts-bar-vertical>
-</div>
+  </div>
+  
